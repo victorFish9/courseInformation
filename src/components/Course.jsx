@@ -1,18 +1,18 @@
 import { useState } from "react"
 
-const Course = ({ course }) => {
-    console.log(course.parts)
-    const total = course.parts.reduce((sum, part) => sum + part.exercises, 0)
-    console.log(total)
+const Course = (props) => {
+
     return (
         <>
-            <h2>{course.name}</h2>
-            {course.parts.map(x =>
-                <p key={x.id}>{x.name} <span>{x.exercises}</span></p>
+            {props.courses.map(x =>
+                <div key={x.id}>
+                    <h2>{x.name}</h2>
+                    {x.parts.map(y =>
+                        <div key={y.id}>
+                            <p >{y.name} {y.exercises}</p>
+                        </div>)}
 
-            )}
-            <p>total of {total} exercies</p>
-
+                </div>)}
         </>
     )
 }
